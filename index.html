@@ -1,198 +1,97 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Fuel AI</title>
-<meta name="description" content="Training plans, recovery-aware guidance, and habit tracking powered by Fuel AI." />
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#1f1b16; --muted:#6f665d; --brand:#111; --bg:#fff;
-  --panel:#f6f6f6; --border:rgba(0,0,0,.08); --shadow:0 8px 28px rgba(0,0,0,.08);
-}
-*{box-sizing:border-box}
-body{margin:0; font-family:Inter,system-ui,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; letter-spacing:.2px}
-.container{max-width:1120px;margin:0 auto;padding:40px 20px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid transparent;cursor:pointer}
-.btn-primary{background:var(--brand);color:#fff}
-.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--ink)}
-.card{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
-
-/* HERO */
-.hero{
-  border-radius:16px; overflow:hidden; margin:14px 12px; color:#fff;
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
-}
-.hero-inner{min-height:64vh;display:grid;place-items:center;text-align:center;padding:40px 20px}
-.hero h1{font-size:clamp(36px,7vw,72px);line-height:1.05;margin:0 0 10px;font-weight:800}
-.hero p{font-size:clamp(16px,2.6vw,20px);opacity:.98;margin:0 0 16px}
-
-/* FEATURES */
-.section{margin:14px 12px}
-.section.alt{background:var(--panel);border-radius:16px}
-.section .container{padding:34px 20px}
-.section h2{font-size:clamp(26px,4.8vw,40px);margin:0 0 14px}
-.grid-3{display:grid;gap:16px}
-@media(min-width:900px){.grid-3{grid-template-columns:repeat(3,1fr)}}
-.tile{border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
-.tile img{width:100%;height:180px;object-fit:cover;display:block}
-.tile h3{font-size:18px;margin:10px 12px 4px}
-.tile p{margin:0 12px 14px;color:var(--muted)}
-
-/* PRICING (no free option) */
-.pricing .cards{display:grid;gap:16px}
-@media(min-width:900px){.pricing .cards{grid-template-columns:repeat(3,1fr)}}
-.price-card{padding:18px}
-.price{font-size:32px;font-weight:800}
-ul.clean{margin:10px 0 0; padding-left:18px; color:var(--muted); line-height:1.7}
-
-/* CONTACT */
-.form-card{padding:18px}
-.field{margin-bottom:12px}
-label{display:block;font-weight:700;font-size:14px;margin:0 0 6px}
-input,textarea,select{
-  width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow)
-}
-small.muted{color:var(--muted)}
-.success{color:#186a3b;font-weight:700}
-.error{color:#a93226;font-weight:700}
-footer{padding:28px 20px;text-align:center;color:var(--muted)}
-</style>
+<meta charset="utf-8">
+<title>Fuel AI — Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-inner container">
-    <div>
-      <h1>Make progress inevitable.</h1>
-      <p>Training plans and recovery-aware guidance that adapt to real life.</p>
-      <a class="btn btn-primary" href="#contact">Get in touch</a>
-      <a class="btn btn-ghost" href="#pricing" style="margin-left:8px">See pricing</a>
-    </div>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="Fuel AI home">
+      <span class="dot"></span><span>Fuel&nbsp;AI</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="philosophy.html">Our philosophy</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="philosophy.html">Our philosophy</a>
+    <a href="blog.html">Blog</a>
   </div>
 </header>
 
-<!-- FEATURES -->
-<section class="section">
-  <div class="container">
-    <h2>What you get</h2>
+<main>
+  <section class="container hero">
+    <div class="section">
+      <p class="badge">Welcome</p>
+      <h1 class="title">Personalized fitness that respects real life</h1>
+      <p class="kicker">Train, recover, and improve with clear, adaptable guidance—no noise.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="pricing.html">See pricing</a>
+        <a class="btn btn-ghost" href="how-it-works.html">How it works</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
     <div class="grid-3">
-      <article class="tile">
-        <img src="https://images.unsplash.com/photo-1517963628607-235ccdd5476c?auto=format&fit=crop&w=1200&q=70" alt="">
-        <h3>Adaptive training</h3>
-        <p>Goal-based plans that auto-tune volume with sleep/stress signals.</p>
+      <article class="card">
+        <h3>Training plans</h3>
+        <p>Smart progressions and swaps for time/equipment. Built to be repeatable.</p>
       </article>
-      <article class="tile">
-        <img src="https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?auto=format&fit=crop&w=1200&q=70" alt="">
-        <h3>Simple daily guidance</h3>
-        <p>Exactly what to do today—warm-ups, sets, reps, and rest times.</p>
+      <article class="card">
+        <h3>Nutrition logging</h3>
+        <p>Fast logging and insights that support—not guilt.</p>
       </article>
-      <article class="tile">
-        <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d91?auto=format&fit=crop&w=1200&q=70" alt="">
+      <article class="card">
         <h3>Recovery first</h3>
-        <p>Sleep hygiene, deloads, and nudges that support—not nag.</p>
+        <p>Sleep, deloads, and nudges that keep you sustainable.</p>
       </article>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<!-- PRICING -->
-<section id="pricing" class="section alt">
-  <div class="container pricing">
-    <h2>Pricing</h2>
-    <div class="cards">
-      <article class="card price-card">
-        <h3>Core</h3>
-        <div class="price">$9<span style="font-weight:600;color:var(--muted)">/mo</span></div>
-        <ul class="clean">
-          <li>Personalized training plans</li>
-          <li>Recovery-aware adjustments</li>
-          <li>Progress tracking & streaks</li>
-          <li>Email support</li>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo"><span class="dot"></span><span>Fuel&nbsp;AI</span></div>
+        <p>Calm, disciplined health guidance powered by clear AI.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="philosophy.html">Our philosophy</a></li>
         </ul>
-      </article>
-
-      <article class="card price-card">
-        <h3>Plus</h3>
-        <div class="price">$19<span style="font-weight:600;color:var(--muted)">/mo</span></div>
-        <ul class="clean">
-          <li>Everything in Core</li>
-          <li>Gym AI integration</li>
-          <li>Advanced exercise swaps</li>
-          <li>Priority support</li>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="mailto:appflowai@gmail.com">Contact</a></li>
+          <li><a href="#">Privacy & Terms</a></li>
         </ul>
-      </article>
-
-      <article class="card price-card">
-        <h3>Teams</h3>
-        <div class="price">Custom</div>
-        <ul class="clean">
-          <li>Group discounts</li>
-          <li>Centralized billing</li>
-          <li>Shareable signup link</li>
-          <li>Onboarding kit</li>
-        </ul>
-      </article>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="y"></span> Fuel AI</div>
+      <div>appflowai@gmail.com</div>
     </div>
   </div>
-</section>
-
-<!-- CONTACT (Formspree) -->
-<section id="contact" class="section">
-  <div class="container">
-    <h2>Contact</h2>
-    <div class="card form-card" style="max-width:760px;margin:0 auto">
-      <form id="contact-form" action="https://formspree.io/f/myzpakyg" method="POST" novalidate>
-        <div class="field">
-          <label for="name">Your name</label>
-          <input id="name" name="name" required placeholder="Alex Kim" />
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required placeholder="you@example.com" />
-        </div>
-        <div class="field">
-          <label for="msg">Message</label>
-          <textarea id="msg" name="message" rows="4" placeholder="How can we help?"></textarea>
-        </div>
-        <button class="btn btn-primary" type="submit">Send</button>
-        <p class="success" id="ok" hidden>Thanks! We’ll reply by email.</p>
-        <p class="error" id="err" hidden>Something went wrong—email appflowai@gmail.com.</p>
-        <small class="muted">This form is powered by Formspree’s free tier.</small>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © <span id="y"></span> Fuel AI • <a href="mailto:appflowai@gmail.com">appflowai@gmail.com</a>
 </footer>
-
-<script>
-document.getElementById('y').textContent = new Date().getFullYear();
-
-const form = document.getElementById('contact-form');
-const ok = document.getElementById('ok');
-const err = document.getElementById('err');
-
-form.addEventListener('submit', async (e)=>{
-  e.preventDefault(); ok.hidden = true; err.hidden = true;
-  const data = Object.fromEntries(new FormData(form).entries());
-  try{
-    const res = await fetch(form.action, {
-      method:'POST',
-      headers:{'Accept':'application/json','Content-Type':'application/json'},
-      body: JSON.stringify(data)
-    });
-    if(res.ok){ form.reset(); ok.hidden = false; }
-    else{ throw new Error(); }
-  }catch(_){ err.hidden = false; }
-});
-</script>
+<script src="assets/script.js"></script>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
