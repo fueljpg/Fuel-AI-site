@@ -1,0 +1,144 @@
+/* ===========================
+   Fuel AI — Minimal Site Styles
+   =========================== */
+:root{
+  --bg:#ffffff;
+  --ink:#161513;
+  --muted:#6b6b6b;
+  --line:#eaeaea;
+  --panel:#f7f7f7;
+  --brand:#111111;
+  --radius:14px;
+  --radius-sm:10px;
+  --shadow:0 6px 24px rgba(0,0,0,.06);
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0; color:var(--ink); background:var(--bg);
+  font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+  letter-spacing:.2px;
+}
+img{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; text-decoration:none; }
+a:hover{ text-decoration:underline; text-underline-offset:2px; }
+.container{ max-width:1100px; margin:0 auto; padding:32px 20px; }
+
+/* Header */
+.site-header{
+  position:sticky; top:0; z-index:40;
+  background:rgba(255,255,255,.86); backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px 20px; max-width:1100px; margin:0 auto;
+}
+.brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; }
+.brand .dot{ width:10px; height:10px; border-radius:3px; background:var(--brand); display:inline-block; }
+.nav{ display:flex; gap:18px; align-items:center; }
+.nav a{ padding:8px 10px; border-radius:8px; text-decoration:none; }
+.nav a[aria-current="page"]{ background:var(--panel); font-weight:700; }
+.hamburger{ display:none; background:transparent; border:0; padding:8px; }
+
+/* Footer */
+.site-footer{ border-top:1px solid var(--line); margin-top:60px; }
+.footer-inner{ max-width:1100px; margin:0 auto; padding:32px 20px; }
+.footer-top{
+  display:grid; gap:18px; grid-template-columns: 1.4fr 1fr 1fr;
+}
+.footer-brand{ display:flex; flex-direction:column; gap:8px; color:var(--muted); }
+.footer-brand .logo{ display:flex; align-items:center; gap:10px; font-weight:800; color:var(--ink); }
+.footer-col h4{ margin:0 0 8px; font-size:14px; letter-spacing:.4px; text-transform:uppercase; color:#222; }
+.footer-col ul{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+.footer-col a{ color:var(--muted); text-decoration:none; }
+.footer-col a:hover{ color:var(--ink); text-decoration:underline; }
+.footer-bottom{
+  display:flex; justify-content:space-between; align-items:center; gap:12px;
+  margin-top:20px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:14px;
+}
+
+/* Sections */
+.section{ border:1px solid var(--line); border-radius:var(--radius); padding:32px; background:#fff; box-shadow:var(--shadow); }
+.section + .section{ margin-top:20px; }
+.section-title{ margin:0 0 8px; font-size:32px; line-height:1.15; }
+.section-sub{ color:var(--muted); margin:0 0 6px; }
+
+/* Hero */
+.hero{ padding:72px 0 36px; }
+.hero .title{ font-size:54px; line-height:1.05; margin:0 0 10px; letter-spacing:.2px; }
+.hero .kicker{ color:var(--muted); margin:0 0 14px; font-size:18px; }
+.cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; }
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 16px; border-radius:10px; border:1px solid var(--line); text-decoration:none; font-weight:700;
+}
+.btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
+.btn-ghost{ background:#fff; color:var(--ink); }
+.badge{ display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; background:#efefef; }
+
+/* Grids */
+.grid-3{ display:grid; gap:16px; }
+.grid-2{ display:grid; gap:16px; }
+
+/* Cards */
+.card{ border:1px solid var(--line); border-radius:var(--radius-sm); padding:18px; background:#fff; }
+.card h3{ margin:4px 0 6px; font-size:20px; }
+.card p{ margin:0; color:var(--muted); }
+
+/* Pricing */
+.pricing-grid{ display:grid; gap:16px; grid-template-columns: repeat(2, minmax(0,1fr)); }
+.price{ font-size:34px; font-weight:800; margin:8px 0; }
+.feature-list{ list-style:none; padding:0; margin:10px 0 0; display:grid; gap:8px; color:var(--muted); }
+.feature-list li{ display:flex; gap:8px; }
+.feature-list .tick{ font-weight:900; }
+
+/* Tables (for features compare) */
+.table{ border:1px solid var(--line); border-radius:var(--radius-sm); overflow:hidden; }
+.tr{ display:grid; grid-template-columns:1.2fr .9fr .9fr; border-top:1px solid var(--line); }
+.tr:first-child{ border-top:none; background:var(--panel); font-weight:700; }
+.td{ padding:12px 14px; }
+
+/* Blog */
+.post-list{ display:grid; gap:16px; grid-template-columns: repeat(3, minmax(0,1fr)); }
+.post{ border:1px solid var(--line); border-radius:var(--radius-sm); padding:16px; background:#fff; }
+.post h3{ margin:2px 0 6px; font-size:18px; }
+.post .meta{ color:var(--muted); font-size:14px; margin-bottom:8px; }
+
+/* How it works */
+.steps{ display:grid; gap:16px; grid-template-columns: repeat(3, minmax(0,1fr)); }
+.step{ border:1px solid var(--line); border-radius:var(--radius-sm); padding:18px; }
+.step .num{ width:26px; height:26px; border-radius:8px; background:#111; color:#fff; font-weight:800; display:inline-flex; align-items:center; justify-content:center; font-size:13px; margin-bottom:8px; }
+
+/* Philosophy page minimal */
+.principles{ display:grid; gap:16px; grid-template-columns: repeat(3, minmax(0,1fr)); }
+.principle{ border:1px solid var(--line); border-radius:var(--radius-sm); padding:18px; }
+
+/* Responsive */
+@media (max-width:980px){
+  .footer-top{ grid-template-columns: 1fr 1fr; }
+  .pricing-grid{ grid-template-columns:1fr; }
+  .post-list{ grid-template-columns:1fr 1fr; }
+  .steps{ grid-template-columns:1fr; }
+  .principles{ grid-template-columns:1fr; }
+  .grid-3{ grid-template-columns:1fr; }
+  .grid-2{ grid-template-columns:1fr; }
+  .nav{ display:none; }
+  .hamburger{ display:inline-block; }
+}
+@media (max-width:640px){
+  .post-list{ grid-template-columns:1fr; }
+  .hero .title{ font-size:40px; }
+}
+
+/* Mobile nav panel */
+.mobile-nav{
+  display:none; border-top:1px solid var(--line); padding:10px 20px 18px; background:#fff;
+}
+.mobile-nav a{ display:block; padding:8px 0; }
+
+/* Utilities */
+.mt-8{ margin-top:8px; }
+.mt-16{ margin-top:16px; }
+.hr{ height:1px; background:var(--line); margin:14px 0; border:0; }
