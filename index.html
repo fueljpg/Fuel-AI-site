@@ -1,355 +1,92 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fuel AI — The Better Nutrition App</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --page:#e9dfd4;        /* warm sand */
-      --ink:#1f1b16;         /* dark text */
-      --muted:#5b524a;       /* secondary text */
-      --card:#fff;           /* cards */
-      --border:rgba(0,0,0,.1);
-      --brand:#111;
-    }
-    *{ box-sizing:border-box }
-    html,body{ margin:0; padding:0; background:var(--page); color:var(--ink); }
-    body{ font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing:.2px; }
-    a{ color:inherit; text-decoration:none }
-    .container{ max-width:1200px; margin:0 auto; padding:24px 20px; }
-
-    /* Header */
-    .site-head{ position:sticky; top:0; background:var(--page); z-index:10 }
-    .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
-    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px; }
-    .brand svg{ width:38px; height:38px }
-    .nav-links{ display:flex; gap:28px; font-weight:600 }
-    .nav-links a{ opacity:.9 }
-    .nav-links a:hover{ opacity:1; text-decoration:underline }
-
-    /* Hero */
-    .hero{ display:grid; gap:28px; align-items:center; }
-    @media (min-width:980px){ .hero{ grid-template-columns:1.15fr .85fr; min-height:64vh; } }
-    .hero h1{
-      font-family:"Playfair Display", Georgia, serif;
-      font-size:clamp(42px,7vw,84px);
-      line-height:1.02; margin:0 0 8px; font-weight:900;
-    }
-    .hero p{ font-size:clamp(18px,2.5vw,24px); color:var(--muted); margin:10px 0 }
-    .hero .one u{ text-underline-offset:4px; text-decoration-thickness:2px }
-    .phones{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:end; }
-    .phone{ aspect-ratio:9/18; border:6px solid #111; border-radius:36px; position:relative; background:#fff }
-    .phone::before{ content:""; position:absolute; top:10px; left:50%; transform:translateX(-50%); width:40%; height:14px; background:#111; border-radius:10px; }
-    .phone .logo{ position:absolute; top:56px; left:50%; transform:translateX(-50%); width:68%; height:auto; text-align:center; font-weight:900; font-size:clamp(18px,2.2vw,28px); letter-spacing:1px; }
-    .phone .logo:before{ content:""; display:inline-block; width:32px; height:32px; margin-right:8px; background:url('https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/apple.svg') no-repeat center/contain; filter:grayscale(1); opacity:0; } /* placeholder hidden; keep spacing */
-    .phone.tilt-l{ transform:rotate(-7deg) }
-    .phone.tilt-r{ transform:rotate(8deg) }
-    @media (max-width:979px){
-      .phones{ grid-template-columns:repeat(3, minmax(0,1fr)); }
-      .phone{ border-width:5px; border-radius:28px }
-      .phone .logo{ top:40px }
-    }
-
-    /* Accordion + visual */
-    .flowai-wrap{ display:grid; gap:40px; align-items:start; }
-    @media (min-width:980px){ .flowai-wrap{ grid-template-columns:1fr 380px; } }
-    .flowai-features{ width:100%; }
-    .flowai-row{ border-top:1.5px solid #222 }
-    .flowai-row:first-child{ border-top:none }
-    .flowai-item{
-      width:100%; background:transparent; border:0; cursor:pointer;
-      padding:28px 0; display:flex; justify-content:space-between; align-items:center; gap:16px;
-      font: 700 24px/1.25 "Playfair Display", Georgia, serif; text-align:left;
-    }
-    .flowai-plus::before{ content:"+"; font:700 30px/1 Inter, sans-serif }
-    .flowai-item[aria-expanded="true"] .flowai-plus::before{ content:"–" }
-    .flowai-panel{ overflow:hidden; max-height:0; transition:max-height .28s ease, padding .2s ease; padding:0 }
-    .flowai-item[aria-expanded="true"] + .flowai-panel{ padding-bottom:12px }
-    .flowai-desktop-text{ color:var(--muted); font-size:16px }
-
-    .flowai-visual{ display:flex; justify-content:center }
-    .flowai-image{ width:100%; max-width:340px; aspect-ratio:9/18; object-fit:contain; border:6px solid #111; border-radius:36px; background:#fff }
-
-    @media (max-width:749px){
-      .flowai-visual{ display:none }
-      .flowai-mobile-wrapper{ display:flex; align-items:flex-start; gap:12px; margin-top:8px }
-      .flowai-mobile-image{
-        width:160px; height:160px; flex-shrink:0; object-fit:contain;
-        border:5px solid #111; border-radius:24px; background:#fff;
-      }
-      .flowai-mobile-text{ font-size:15px; color:#333; line-height:1.45 }
-    }
-
-    /* Why Fuel AI */
-    .why-fuel-ai{ text-align:center; margin-top:36px }
-    .why-fuel-ai h2{
-      font-family:"Playfair Display", Georgia, serif; font-size:clamp(28px,4.8vw,40px); margin:0 0 18px;
-    }
-    .fuelai-features-grid{ display:grid; gap:18px }
-    @media (min-width:980px){ .fuelai-features-grid{ grid-template-columns:repeat(4,1fr) } }
-    .fuelai-feature-box{
-      background:rgba(255,255,255,.6); border-radius:14px; padding:22px; height:100%;
-      transition:transform .18s ease, box-shadow .18s ease;
-    }
-    .fuelai-feature-box:hover{ transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,.06) }
-    .fuelai-icon{ font-size:30px; margin-bottom:8px }
-    .fuelai-feature-title{ margin:0 0 6px; font-weight:700; }
-    .fuelai-feature-desc{ margin:0; color:var(--muted); line-height:1.6 }
-    /* mobile horizontal scroll */
-    @media (max-width:979px){
-      .fuelai-features-grid{ display:flex; overflow-x:auto; gap:12px; padding:2px 2px 8px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch }
-      .fuelai-features-grid::-webkit-scrollbar{ display:none }
-      .fuelai-feature-box{ flex:0 0 86%; scroll-snap-align:center }
-    }
-
-    .cta-wrap{ display:flex; justify-content:center; margin:28px 0 12px }
-    .btn{
-      appearance:none; border:0; background:#2b2622; color:#fff; padding:16px 26px; border-radius:14px;
-      font-weight:700; font-size:18px; cursor:pointer;
-    }
-    .btn:hover{ filter:brightness(1.06) }
-
-    /* Footer */
-    footer{ border-top:1px solid var(--border); margin-top:28px }
-    .foot{ display:grid; gap:24px; align-items:start; padding-top:30px; padding-bottom:50px }
-    @media (min-width:1000px){ .foot{ grid-template-columns:1.2fr repeat(4,1fr) } }
-    .foot .big-logo{ display:flex; align-items:center; gap:14px; font-weight:900; letter-spacing:.6px; font-size:44px }
-    .foot .big-logo svg{ width:80px; height:80px }
-    .foot h4{ margin:0 0 10px; font:700 26px/1 "Playfair Display", Georgia, serif }
-    .foot ul{ list-style:none; padding:0; margin:0; display:grid; gap:10px }
-    .foot a{ color:#1f1b16; text-decoration:underline; text-underline-offset:3px }
-    .foot a:hover{ opacity:.9 }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fuel AI — Make progress inevitable</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 
   <!-- Header -->
-  <header class="site-head">
+  <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="index.html" aria-label="Fuel AI home">
-        <!-- simple round logo -->
-        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
-          <circle cx="32" cy="32" r="28"></circle>
-          <path d="M24 20v16M20 28h8M40 20l-4 6 6 10"></path>
-        </svg>
-        FUEL&nbsp;AI
-      </a>
-
-      <nav class="nav-links" aria-label="Primary">
-        <a href="pricing.html">Pricing</a>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="our-philosophy.html">Our Philosophy</a>
-        <a href="blog.html">Blog</a>
+      <a class="brand" href="/index.html"><span class="brand-dot"></span> Fuel AI</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav id="menu" class="nav-menu" aria-label="Primary">
+        <a href="/index.html" aria-current="page">Home</a>
+        <a href="/how-it-works.html">How it works</a>
+        <a href="/philosophy.html">Our philosophy</a>
+        <a href="/blog/">Blog</a>
+        <a class="btn btn--primary" href="/pricing.html">Pricing</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="container hero" id="hero">
-    <div>
-      <h1>The Better<br>Nutrition App</h1>
-      <p>Food, Fitness, and Sleep.</p>
-      <p class="one">All in <u>ONE</u> place.</p>
-    </div>
-    <div class="phones" aria-hidden="true">
-      <div class="phone tilt-l"><div class="logo">FUEL&nbsp;AI</div></div>
-      <div class="phone"><div class="logo">FUEL&nbsp;AI</div></div>
-      <div class="phone tilt-r"><div class="logo">FUEL&nbsp;AI</div></div>
-    </div>
-  </section>
-
-  <!-- TOP: Accordion + phone -->
-  <section class="container flowai-wrap" id="features">
-    <div class="flowai-features" role="tablist" aria-label="FlowAI features">
-      <!-- 1 -->
-      <div class="flowai-row">
-        <button class="flowai-item" aria-expanded="false">
-          <span>Track what you eat with our built-in food scanner</span>
-          <span class="flowai-plus" aria-hidden="true"></span>
-        </button>
-        <div class="flowai-panel" role="region" hidden>
-          <div class="flowai-desktop-text">Scan barcodes or snap a photo to log calories, macros, and ingredients in seconds.</div>
+  <main>
+    <section class="hero section">
+      <div class="container">
+        <h1>Make progress inevitable.</h1>
+        <p class="lead">Fuel AI gives you clear training, smart adjustments, and habit support—without the noise. Built for people who want consistent, compounding results.</p>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn btn--primary" href="/how-it-works.html">How it works</a>
+          <a class="btn btn--ghost" href="/pricing.html">See pricing</a>
         </div>
       </div>
-      <!-- 2 -->
-      <div class="flowai-row">
-        <button class="flowai-item" aria-expanded="false">
-          <span>Build your fitness plan using our Gym AI</span>
-          <span class="flowai-plus" aria-hidden="true"></span>
-        </button>
-        <div class="flowai-panel" role="region" hidden>
-          <div class="flowai-desktop-text">Adaptive programs based on goals, equipment, and recovery—auto-progressed weekly.</div>
-        </div>
-      </div>
-      <!-- 3 -->
-      <div class="flowai-row">
-        <button class="flowai-item" aria-expanded="false">
-          <span>See realtime progress with our fitness tracker</span>
-          <span class="flowai-plus" aria-hidden="true"></span>
-        </button>
-        <div class="flowai-panel" role="region" hidden>
-          <div class="flowai-desktop-text">Live stats, PR alerts, and trends across lifts, steps, sleep, and nutrition.</div>
-        </div>
-      </div>
-      <!-- 4 -->
-      <div class="flowai-row">
-        <button class="flowai-item" aria-expanded="false">
-          <span>Connect your health watch to log other health statistics</span>
-          <span class="flowai-plus" aria-hidden="true"></span>
-        </button>
-        <div class="flowai-panel" role="region" hidden>
-          <div class="flowai-desktop-text">Sync heart rate, HRV, sleep, and VO₂ to personalize training and recovery.</div>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="flowai-visual" aria-hidden="true">
-      <img class="flowai-image" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/IPhone_14_Pro_vector.svg" alt="" />
-    </div>
-  </section>
-
-  <!-- BOTTOM: Why Fuel AI -->
-  <section class="container why-fuel-ai" id="why">
-    <h2>Why Fuel AI Leads the Pack</h2>
-    <div class="fuelai-features-grid">
-      <article class="fuelai-feature-box">
-        <div class="fuelai-icon">🍽️</div>
-        <h3 class="fuelai-feature-title">Built-In Food Scanner</h3>
-        <p class="fuelai-feature-desc">Snap a photo or scan a barcode to log meals instantly—no third-party apps.</p>
-      </article>
-      <article class="fuelai-feature-box">
-        <div class="fuelai-icon">🧠</div>
-        <h3 class="fuelai-feature-title">Adaptive Training Engine</h3>
-        <p class="fuelai-feature-desc">Plans evolve as you do—auto-progressed based on performance and recovery.</p>
-      </article>
-      <article class="fuelai-feature-box">
-        <div class="fuelai-icon">⌚</div>
-        <h3 class="fuelai-feature-title">Wearable Integration</h3>
-        <p class="fuelai-feature-desc">Syncs with health watches to personalize sleep, HRV, and training loads.</p>
-      </article>
-      <article class="fuelai-feature-box">
-        <div class="fuelai-icon">🚀</div>
-        <h3 class="fuelai-feature-title">Optimized for Everyone</h3>
-        <p class="fuelai-feature-desc">From first workout to race day—simple, powerful, and inclusive by design.</p>
-      </article>
-    </div>
-
-    <div class="cta-wrap">
-      <a class="btn" href="pricing.html">Explore Plans</a>
-    </div>
-  </section>
+    <section class="section section--tight">
+      <div class="container grid-3">
+        <article class="card">
+          <h3>Training that adapts</h3>
+          <p>Auto-tuned volume and progression based on recovery, time, and equipment—showing up beats perfection.</p>
+        </article>
+        <article class="card">
+          <h3>Recovery prioritized</h3>
+          <p>Sleep & deloads built in. Overreaching flags prevent burnout; come back stronger.</p>
+        </article>
+        <article class="card">
+          <h3>Clarity over complexity</h3>
+          <p>Simple plans, adjustable targets, and the “why” behind every recommendation.</p>
+        </article>
+      </div>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer>
-    <div class="container foot">
-      <div class="big-logo">
-        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
-          <circle cx="32" cy="32" r="28"></circle>
-          <path d="M24 20v16M20 28h8M40 20l-4 6 6 10"></path>
-        </svg>
-        FUEL&nbsp;AI
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="f-brand"><span class="brand-dot" style="width:12px;height:12px;border-radius:4px"></span> Fuel AI</div>
+          <p class="f-sub">Practical training, recovery, and habits—guided by AI, owned by you.</p>
+        </div>
+        <div class="f-col">
+          <h4>Company</h4>
+          <a href="/index.html" aria-current="page">Home</a>
+          <a href="/how-it-works.html">How it works</a>
+          <a href="/philosophy.html">Our philosophy</a>
+          <a href="/blog/">Blog</a>
+        </div>
+        <div class="f-col">
+          <h4>More</h4>
+          <a href="/pricing.html">Pricing</a>
+          <a href="mailto:appflowai@gmail.com">Contact</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
       </div>
-
-      <div>
-        <h4>Site</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="how-it-works.html">How It Works</a></li>
-          <li><a href="our-philosophy.html">Our Philosophy</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Use</a></li>
-          <li><a href="cookies.html">Cookie Policy</a></li>
-          <li><a href="dpa.html">Data Processing Addendum</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Contact Us</h4>
-        <ul>
-          <li><a href="mailto:appfuelai@gmail.com">appfuelai@gmail.com</a></li>
-          <li><a href="affiliate.html">Affiliate / Partner Application</a></li>
-          <li><a href="enterprise.html">Custom / Enterprise Pricing</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Follow us</h4>
-        <ul>
-          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <div class="small">© <span data-year></span> Fuel AI</div>
+        <div class="social">
+          <a href="#" aria-label="Twitter" title="Twitter">T</a>
+          <a href="#" aria-label="Instagram" title="Instagram">I</a>
+          <a href="#" aria-label="YouTube" title="YouTube">Y</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script>
-    // Accordion behavior (mobile + desktop)
-    (function(){
-      const root = document.querySelector('.flowai-wrap');
-      const items = root.querySelectorAll('.flowai-item');
-      const panels = root.querySelectorAll('.flowai-panel');
-      const defaultImage = 'https://upload.wikimedia.org/wikipedia/commons/7/7e/IPhone_14_Pro_vector.svg';
-
-      function isMobile(){ return window.innerWidth < 750 }
-
-      function closeAll(){
-        panels.forEach((p, j)=>{
-          p.style.maxHeight='0px';
-          p.setAttribute('hidden','');
-          items[j].setAttribute('aria-expanded','false');
-          p.innerHTML = '<div class="flowai-desktop-text">'+p.dataset.text+'</div>';
-        });
-      }
-
-      panels.forEach((p, i)=>{
-        p.dataset.text = p.textContent.trim();
-      });
-
-      function openPanel(i){
-        const p = panels[i];
-        p.removeAttribute('hidden');
-        if(isMobile()){
-          p.innerHTML = '<div class="flowai-mobile-wrapper">\
-            <img class="flowai-mobile-image" src="'+defaultImage+'" alt="">\
-            <div class="flowai-mobile-text">'+p.dataset.text+'</div>\
-          </div>';
-        }else{
-          p.innerHTML = '<div class="flowai-desktop-text">'+p.dataset.text+'</div>';
-        }
-        p.style.maxHeight = '0px';
-        const target = p.scrollHeight;
-        p.style.maxHeight = target+'px';
-      }
-
-      items.forEach((btn,i)=>{
-        btn.addEventListener('click', e=>{
-          const open = btn.getAttribute('aria-expanded')==='true';
-          closeAll();
-          if(!open){
-            btn.setAttribute('aria-expanded','true');
-            openPanel(i);
-          }
-        });
-      });
-
-      window.addEventListener('resize', ()=>{
-        panels.forEach((p,i)=>{
-          if(!p.hasAttribute('hidden')){
-            openPanel(i);
-          }
-        });
-      });
-    })();
-  </script>
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>
